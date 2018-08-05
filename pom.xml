@@ -12,6 +12,7 @@
     <artifactId>sample</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
+    <url>https://github.com/guozilanTK/sample</url>
     <modules>
         <module>sample-api</module>
         <module>sample-controller</module>
