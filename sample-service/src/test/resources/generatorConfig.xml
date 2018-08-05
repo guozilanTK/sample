@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ The MIT License (MIT)
+  ~
+  ~ Copyright (c) 2014 abel533@gmail.com
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in
+  ~ all copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+  ~ THE SOFTWARE.
+  -->
+
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <properties resource="META-INF/spring/application.properties"/>
+
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <!--通用 Mapper 插件，可以生成带注解的实体类-->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.guozilan.base.service.GzlMapper"/>
+        </plugin>
+
+        <!--通用代码生成器插件-->
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="../mapper-upms-api/src/main/java"/>
+            <property name="targetPackage" value="tk.guozilan.upms.api"/>
+            <property name="projectName" value="upms"/>
+            <property name="templatePath" value="generator/easy/api.ftl"/>
+            <property name="fileName" value="${tableClass.shortClassName}Service.java"/>
+        </plugin>
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="../mapper-upms-service/src/main/java"/>
+            <property name="targetPackage" value="tk.guozilan.upms.service"/>
+            <property name="projectName" value="upms"/>
+            <property name="templatePath" value="generator/easy/service.ftl"/>
+            <property name="fileName" value="${tableClass.shortClassName}ServiceImpl.java"/>
+        </plugin>
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="../mapper-upms-service/src/main/java"/>
+            <property name="targetPackage" value="tk.guozilan.upms.mapper"/>
+            <property name="projectName" value="upms"/>
+            <property name="templatePath" value="generator/easy/mapper.ftl"/>
+            <property name="fileName" value="${tableClass.shortClassName}Mapper.java"/>
+        </plugin>
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="../mapper-upms-service/src/main/resources"/>
+            <property name="targetPackage" value="tk.guozilan.upms.mapper"/>
+            <property name="projectName" value="upms"/>
+            <property name="templatePath" value="generator/easy/mapperXml.ftl"/>
+            <property name="fileName" value="${tableClass.shortClassName}Mapper.xml"/>
+        </plugin>
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="../mapper-upms-controller/src/main/java"/>
+            <property name="targetPackage" value="tk.guozilan.upms.controller"/>
+            <property name="projectName" value="upms"/>
+            <property name="templatePath" value="generator/easy/controller.ftl"/>
+            <property name="fileName" value="${tableClass.shortClassName}Controller.java"/>
+        </plugin>
+        <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
+            <property name="targetProject" value="../mapper-upms-web/src/main/webapp/WEB-INF"/>
+            <property name="targetPackage" value="view.upms"/>
+            <property name="templatePath" value="generator/easy/web-layui-main.ftl"/>
+            <property name="fileName" value="${tableClass.lowerCaseName}-main.jsp"/>
+        </plugin>
+
+        <jdbcConnection driverClass="${jdbc.driverClass}"
+                        connectionURL="${jdbc.url}"
+                        userId="${jdbc.user}"
+                        password="${jdbc.password}">
+        </jdbcConnection>
+
+        <javaModelGenerator targetPackage="tk.guozilan.upms.model"
+                            targetProject="../mapper-upms-api/src/main/java"/>
+
+        <table tableName="country">
+            <!--<property name="rootClass" value="tk.guozilan.base.model.BaseId"/>-->
+            <!--分页选择下面这个-->
+            <property name="rootClass" value="tk.guozilan.base.model.BasePage"/>
+        </table>
+    </context>
+</generatorConfiguration>
