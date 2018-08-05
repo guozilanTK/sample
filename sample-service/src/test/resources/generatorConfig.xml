@@ -42,55 +42,55 @@
 
         <!--通用代码生成器插件-->
         <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
-            <property name="targetProject" value="../mapper-upms-api/src/main/java"/>
-            <property name="targetPackage" value="tk.guozilan.upms.api"/>
-            <property name="projectName" value="upms"/>
-            <property name="templatePath" value="generator/easy/api.ftl"/>
+            <property name="targetProject" value="../sample-api/src/main/java"/>
+            <property name="targetPackage" value="tk.guozilan.sample.api"/>
+            <property name="projectName" value="sample"/>
+            <property name="templatePath" value="generator/guozilan/api.ftl"/>
             <property name="fileName" value="${tableClass.shortClassName}Service.java"/>
         </plugin>
         <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
-            <property name="targetProject" value="../mapper-upms-service/src/main/java"/>
-            <property name="targetPackage" value="tk.guozilan.upms.service"/>
-            <property name="projectName" value="upms"/>
-            <property name="templatePath" value="generator/easy/service.ftl"/>
+            <property name="targetProject" value="../sample-service/src/main/java"/>
+            <property name="targetPackage" value="tk.guozilan.sample.service"/>
+            <property name="projectName" value="sample"/>
+            <property name="templatePath" value="generator/guozilan/service.ftl"/>
             <property name="fileName" value="${tableClass.shortClassName}ServiceImpl.java"/>
         </plugin>
         <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
-            <property name="targetProject" value="../mapper-upms-service/src/main/java"/>
-            <property name="targetPackage" value="tk.guozilan.upms.mapper"/>
-            <property name="projectName" value="upms"/>
-            <property name="templatePath" value="generator/easy/mapper.ftl"/>
+            <property name="targetProject" value="../sample-service/src/main/java"/>
+            <property name="targetPackage" value="tk.guozilan.sample.mapper"/>
+            <property name="projectName" value="sample"/>
+            <property name="templatePath" value="generator/guozilan/mapper.ftl"/>
             <property name="fileName" value="${tableClass.shortClassName}Mapper.java"/>
         </plugin>
         <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
-            <property name="targetProject" value="../mapper-upms-service/src/main/resources"/>
-            <property name="targetPackage" value="tk.guozilan.upms.mapper"/>
-            <property name="projectName" value="upms"/>
-            <property name="templatePath" value="generator/easy/mapperXml.ftl"/>
+            <property name="targetProject" value="../sample-service/src/main/resources"/>
+            <property name="targetPackage" value="tk.guozilan.sample.mapper"/>
+            <property name="projectName" value="sample"/>
+            <property name="templatePath" value="generator/guozilan/mapperXml.ftl"/>
             <property name="fileName" value="${tableClass.shortClassName}Mapper.xml"/>
         </plugin>
         <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
-            <property name="targetProject" value="../mapper-upms-controller/src/main/java"/>
-            <property name="targetPackage" value="tk.guozilan.upms.controller"/>
-            <property name="projectName" value="upms"/>
-            <property name="templatePath" value="generator/easy/controller.ftl"/>
+            <property name="targetProject" value="../sample-controller/src/main/java"/>
+            <property name="targetPackage" value="tk.guozilan.sample.controller"/>
+            <property name="projectName" value="sample"/>
+            <property name="templatePath" value="generator/guozilan/controller.ftl"/>
             <property name="fileName" value="${tableClass.shortClassName}Controller.java"/>
         </plugin>
         <plugin type="tk.mybatis.mapper.generator.TemplateFilePlugin">
-            <property name="targetProject" value="../mapper-upms-web/src/main/webapp/WEB-INF"/>
-            <property name="targetPackage" value="view.upms"/>
-            <property name="templatePath" value="generator/easy/web-layui-main.ftl"/>
+            <property name="targetProject" value="../sample-web/src/main/webapp/WEB-INF"/>
+            <property name="targetPackage" value="view.sample"/>
+            <property name="templatePath" value="generator/guozilan/web-layui-main.ftl"/>
             <property name="fileName" value="${tableClass.lowerCaseName}-main.jsp"/>
         </plugin>
 
-        <jdbcConnection driverClass="${jdbc.driverClass}"
-                        connectionURL="${jdbc.url}"
-                        userId="${jdbc.user}"
-                        password="${jdbc.password}">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/test"
+                        userId="root"
+                        password="">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="tk.guozilan.upms.model"
-                            targetProject="../mapper-upms-api/src/main/java"/>
+        <javaModelGenerator targetPackage="tk.guozilan.sample.model"
+                            targetProject="../sample-api/src/main/java"/>
 
         <table tableName="country">
             <!--<property name="rootClass" value="tk.guozilan.base.model.BaseId"/>-->
